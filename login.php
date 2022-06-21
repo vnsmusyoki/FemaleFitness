@@ -1,3 +1,7 @@
+<?php
+session_start();
+$username = $message = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,17 +35,26 @@
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3">
+                            <form class="pt-3" method="POST" action="">
+                                <?php
+
+                                if (isset($_POST["loginaccount"])) {
+
+                                    require 'functions/login-validate.php';
+                                }
+                                ?>
+                                <?php echo $message; ?>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Username" name="email">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
+                                        placeholder="Write username here" name="username"
+                                        value="<?php echo $username; ?>">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
                                         id="exampleInputPassword1" placeholder="Password" name="password">
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit"
+                                    <button type="submit" name="loginaccount"
                                         class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
                                         SIGN
                                         IN</button>
