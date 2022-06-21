@@ -5,17 +5,17 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="card" style="padding:2rem 1rem;">
-                    <h4 class="text-center mb-4">All Work Out Plans</h4>
+                    <h4 class="text-center mb-4">Generate Report of all Work Out Plans</h4>
 
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="example">
+                        <!-- <table class="table table-bordered" id="example"> -->
+                        <table id="example" class="example" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Work Out Name</th>
                                     <th>Work Out Cost</th>
                                     <th>Description</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,10 +39,6 @@
                                                                 <td>Ksh. $cost</td>
                                                                 <td>$description</td> 
                                                                
-                                                                <td>
-                                                                    <a href='edit-workout.php?w=$workid' class='btn btn-primary btn-sm'>Edit</a>
-                                                                    <a href='delete-workout.php?w=$workid' class='btn btn-danger btn-sm'>Delete</a>
-                                                                </td>
                                                                     </tr>
                                                         ";
                                     }

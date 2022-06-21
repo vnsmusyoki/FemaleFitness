@@ -2,6 +2,7 @@
 include '../../db-connection.php';
 $name = mysqli_real_escape_string($conn, $_POST['workout_name']);
 $cost = mysqli_real_escape_string($conn, $_POST['workout_cost']);
+$workoutid = mysqli_real_escape_string($conn, $_POST['workout_id']);
 $description = mysqli_real_escape_string($conn, $_POST['workout_description']);
 if (empty($name) || empty($cost) || empty($description)) {
     $message = "
@@ -22,7 +23,7 @@ if (empty($name) || empty($cost) || empty($description)) {
         </script>
     ";
 } else {
-    $addworkout =  "INSERT INTO `workout`(`workout_name`, `workout_description`, `workout_cost`) VALUES ('$name',  '$description', '$cost')";
+    $addworkout =  "UPDATE `workout` SET `workout_name`='$name', `workout_description`='$description', `workout_cost`='$cost' WHERE `workout_id` = '$workoutid'";
     $queryworkout = mysqli_query($conn, $addworkout);
     if ($queryworkout) {
         $message = "

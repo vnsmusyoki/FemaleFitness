@@ -1,4 +1,23 @@
-<?php $message = $workout_name = $workout_description = $workout_cost = '';?>
+<?php $message = $workout_name = $workout_description = $workout_cost = ''; ?>
+<?php
+$bookingrec = $_GET['w'];
+include '../../db-connection.php';
+$bookings = "SELECT * FROM `workout` WHERE `workout_id` = '$bookingrec'";
+$querybookings = mysqli_query($conn, $bookings);
+$bookingsrows = mysqli_num_rows($querybookings);
+if ($bookingsrows >= 1) {
+    while ($fetch  = mysqli_fetch_assoc($querybookings)) {
+        $wworkid = $fetch['workout_id'];
+        $wname = $fetch['workout_name'];
+        $wdescription = $fetch['workout_description'];
+        $wcost = $fetch['workout_cost'];
+    }
+    global $wdescription;
+    global $wcost;
+    global $wworkid;
+    global $wname;
+}
+?>
 <?php include 'header.php' ?>
 <div class="main-panel">
     <div class="content-wrapper">
@@ -13,34 +32,38 @@
                         <form class="forms-sample" action="" method="POST">
                             <?php
 
-                            if (isset($_POST["submitworkout"])) {
+                            if (isset($_POST["edittworkout"])) {
 
-                                require 'add-workout-validate.php';
+                                require 'edit-workout-validate.php';
                             }
                             ?>
                             <?php echo $message; ?>
                             <div class="row">
+                                <input type="hidden" name="workout_id" value="<?php echo $wworkid; ?>">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Work Out Name</label>
                                         <input type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="Work Out Name" name="workout_name">
+                                            placeholder="Work Out Name" name="workout_name"
+                                            value="<?php echo $wname; ?>">
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class=" col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">Email address</label>
+                                        <label for="exampleInputEmail3">Work Out Cost</label>
                                         <input type="number" class="form-control" id="exampleInputEmail3"
-                                            placeholder="E.G 250" name="workout_cost">
+                                            placeholder="E.G 250" name="workout_cost" value="<?php echo $wcost; ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Work Out Description</label>
                                 <textarea class="form-control" id="exampleTextarea1" rows="5"
-                                    name="workout_description"></textarea>
+                                    name="workout_description"><?php echo $wdescription; ?></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2" name="submitworkout">Submit</button>
+                            <button type=" submit" class="btn btn-warning mr-2 text-light" name="edittworkout">Update
+                                Work
+                                Out</button>
                         </form>
                     </div>
                 </div>

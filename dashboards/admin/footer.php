@@ -16,21 +16,13 @@
 <script src="../js/dashboard.js"></script>
 <script src="../js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#example').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
-    });
-    $('#exampletwo').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
-    });
-    $('#examplethree').DataTable({
         dom: 'Bfrtip',
         buttons: [
             'print'
