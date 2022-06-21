@@ -3,9 +3,6 @@
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="../vendors/chart.js/Chart.min.js"></script>
-<!-- <script src="../vendors/datatables.net/jquery.dataTables.js"></script> -->
-<script src="../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<script src="../js/dataTables.select.min.js"></script>
 
 <!-- End plugin js for this page -->
 <!-- inject:js -->
@@ -19,3 +16,25 @@
 <script src="../js/dashboard.js"></script>
 <script src="../js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
+<script>
+$(document).ready(function() {
+    $('#example').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    });
+    $('#exampletwo').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    });
+    $('#examplethree').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    });
+});
+</script>

@@ -1,10 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['member'])) {
-    echo "<script>alert('yes it is not set');</script>";
+if (!isset($_SESSION['admin'])) {
     header('Location: ../../login.php');
 } else {
-    $loggedinmember = $_SESSION['member'];
+    $loggedinmember = $_SESSION['admin'];
     global $loggedinmember;
 }
 ?>
@@ -30,6 +29,11 @@ if (!isset($_SESSION['member'])) {
     <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/toastr-btn.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/toastr-options.js"></script>
 </head>
 
 <body>
@@ -113,13 +117,13 @@ if (!isset($_SESSION['member'])) {
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Bookings</span>
+                            <span class="menu-title">Work Outs</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="appointments.php">All
-                                        Appointments</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="add-workouts.php">Add
+                                        Workout</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="payments.php">Payments</a></li>
                             </ul>
                         </div>
