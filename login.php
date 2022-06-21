@@ -49,15 +49,16 @@
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                         <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input">
-                                            Keep me signed in
+                                            <a href="index.php">Return Home</a>
                                         </label>
                                     </div>
-                                    <a href="index.php" class="auth-link text-black">Return to Homepage?</a>
+                                    <a href="member-register.php" class="auth-link text-black">Create Member
+                                        Account?</a>
                                 </div>
 
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="register.php" class="text-primary">Create</a>
+                                    Don't have an account? <a href="register.php" class="text-primary">Create Instructor
+                                        Account</a>
                                 </div>
                             </form>
                         </div>

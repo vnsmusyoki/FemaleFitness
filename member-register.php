@@ -1,4 +1,4 @@
-<?php $full_name = $username = $phone_number = $password = $confirmpassword = $email = $location_address = $message = ''; ?>
+<?php $full_name = $username = $phone_number = $password = $confirmpassword = $email  = $message = $date_of_birth = $gender = $start_date = $end_date = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,19 +36,20 @@
 
                             </div>
                             <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Instructor Account.</h6>
+                            <h6 class="font-weight-light">Member Account.</h6>
                             <form class="pt-3" method="POST" action="" autocomplete="off">
                                 <?php
 
                                 if (isset($_POST["createaccount"])) {
 
-                                    require 'functions/register-validate.php';
+                                    require 'functions/member-register-validate.php';
                                 }
                                 ?>
                                 <?php echo $message; ?>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Instructor Full Name" name="full_name">
+                                        placeholder="Member Full Name" name="full_name">
+                                    <small class="text-muted form-text">Write Full Name</small>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputPassword1"
@@ -57,16 +58,36 @@
                                 <div class="form-group">
                                     <input type="number" class="form-control form-control-lg" id="exampleInputPassword1"
                                         placeholder="07*********" name="phone_number">
+                                    <small class="text-muted form-text">Valid Phone Number</small>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputPassword1"
                                         placeholder="Email@example.com" name="email">
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="form-control form-control-lg" id="exampleInputPassword1" cols="3"
-                                        rows="4" placeholder="Instruction Location Address"
-                                        name="location_address"></textarea>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="date" class="form-control form-control-lg"
+                                                id="exampleInputPassword1" placeholder="Email@example.com"
+                                                name="date_of_birth">
+                                            <small class="text-muted form-text">Date of Birth</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <select class="form-control form-control-lg" id="exampleInputPassword1"
+                                                cols="3" rows="4" placeholder="Instruction Location Address"
+                                                name="gender">
+                                                <option value="">Click to Select</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <small class="text-muted form-text">Select Gender</small>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
                                         id="exampleInputPassword1" placeholder="Password" name="password">
@@ -76,10 +97,29 @@
                                         id="exampleInputPassword1" placeholder="Confirm Password"
                                         name="confirmpassword">
                                 </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="date" class="form-control form-control-lg"
+                                                id="exampleInputPassword1" placeholder="Confirm Password"
+                                                name="start_date">
+                                            <small class="text-muted form-text">Start Date</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="date" class="form-control form-control-lg"
+                                                id="exampleInputPassword1" placeholder="Confirm Password"
+                                                name="end_date">
+                                            <small class="text-muted form-text">End Date</small>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="mt-3">
                                     <button type="submit" name="createaccount"
                                         class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                                        Instructor Account Sign Up</button>
+                                        Member Account Sign Up
+                                    </button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
@@ -91,8 +131,7 @@
                                 </div>
 
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="member-register.php" class="text-primary">Create
-                                        Member
+                                    Don't have an account? <a href="register.php" class="text-primary">Create Instructor
                                         Account</a>
                                 </div>
                             </form>
