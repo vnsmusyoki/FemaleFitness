@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SportFIT</title>
+    <title>Female Gym Fitness System</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="SportFIT template project">
@@ -42,16 +42,16 @@
         <div class="menu trans_800">
             <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="services.html">Classes & Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.hpp">Home</a></li>
+                    <li><a href="">Work out Plans</a></li>
+                    <li><a href=" member-register.php">Member Account</a></li>
+                    <li><a href="register.php">Instructor Account</a></li>
+                    <li><a href="login.php">My Account</a></li>
                 </ul>
             </div>
             <div class="menu_phone d-flex flex-row align-items-center justify-content-start">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>652-345 3222 11</span>
+                <span>+254 724 304 786</span>
             </div>
         </div>
 

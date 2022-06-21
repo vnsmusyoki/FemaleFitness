@@ -12,16 +12,16 @@
                      </a>
                      <nav class="main_nav">
                          <ul class="d-flex flex-row align-items-center justify-content-start">
-                             <li class="active"><a href="index.php">Home</a></li>
-                             <li><a href="about.html">About us</a></li>
-                             <li><a href="services.html">Classes & Services</a></li>
-                             <li><a href="blog.html">Blog</a></li>
-                             <li><a href="login.php">Account</a></li>
+                             <li><a href="index.hpp">Home</a></li>
+                             <li><a href="">Work out Plans</a></li>
+                             <li><a href=" member-register.php">Member Account</a></li>
+                             <li><a href="register.php">Instructor Account</a></li>
+                             <li><a href="login.php">My Account</a></li>
                          </ul>
                      </nav>
                      <div class="phone d-flex flex-row align-items-center justify-content-start ml-auto">
                          <i class="fa fa-phone" aria-hidden="true"></i>
-                         <div>652-345 3222 11</div>
+                         <span>+254 724 304 786</span>
                      </div>
                  </div>
              </div>

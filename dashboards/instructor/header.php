@@ -1,7 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['member'])) {
-    echo "<script>alert('yes it is not set');</script>";
+if (!isset($_SESSION['instructor'])) {
     header('Location: ../../login.php');
 } else {
     $loggedinmember = $_SESSION['member'];
@@ -115,13 +114,13 @@ if (!isset($_SESSION['member'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="workout-plans.php">
                             <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">My Bookings</span>
+                            <span class="menu-title">Pending Appointments</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="workout-plans.php">
                             <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">All Payments</span>
+                            <span class="menu-title">Completed Tasks</span>
                         </a>
                     </li>
                     <li class="nav-item">
