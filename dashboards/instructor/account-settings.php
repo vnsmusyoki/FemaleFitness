@@ -12,10 +12,7 @@
                         </p>
                         <form class="forms-sample" action="" method="POST">
                             <?php
-
                             if (isset($_POST["editpassword"])) {
-
-                                include '../../db-connection.php';
                                 $password = mysqli_real_escape_string($conn, $_POST['password']);
                                 $cpassword = mysqli_real_escape_string($conn, $_POST['confirm_password']);
                                 $passlength = strlen($password);
@@ -89,7 +86,7 @@
                             <?php
 
                             if (isset($_POST["edittemail"])) {
-                                include '../../db-connection.php';
+
                                 $email = mysqli_real_escape_string($conn, $_POST['email']);
                                 $passlength = strlen($password);
                                 if (empty($email)) {
@@ -105,7 +102,7 @@
                                         </script>
                                     ";
                                 } else {
-                                    $checkemail = "SELECT *  FROM `admin` WHERE `admin_email` = '$email'";
+                                    $checkemail = "SELECT *  FROM `instructor` WHERE `instructor_email` = '$email'";
                                     $queryemail = mysqli_query($conn, $checkemail);
                                     $checkemailrows = mysqli_num_rows($queryemail);
                                     if ($checkemailrows >= 1) {
@@ -114,7 +111,7 @@
                                         toastr.error('Email Address already exists. Please confirm your email  again .');
                                     </script>";
                                     } else {
-                                        $update = "UPDATE `admin` SET `admin_email` = '$email' WHERE `admin_id` = '$memberid'";
+                                        $update = "UPDATE `instructor` SET `instructor_email` = '$email' WHERE `instructor_id` = '$memberid'";
                                         $queryupdate = mysqli_query($conn, $update);
                                         if ($queryupdate) {
                                             $message = "
@@ -158,7 +155,6 @@
                             <?php
 
                             if (isset($_POST["editusername"])) {
-                                include '../../db-connection.php';
                                 $username = mysqli_real_escape_string($conn, $_POST['username']);
                                 $usernamelength = strlen($username);
                                 if (empty($username)) {

@@ -3,8 +3,31 @@ session_start();
 if (!isset($_SESSION['instructor'])) {
     header('Location: ../../login.php');
 } else {
-    $loggedinmember = $_SESSION['member'];
-    global $loggedinmember;
+    include '../../db-connection.php';
+    $email = $_SESSION['instructor'];
+    $checkemail = "SELECT *  FROM `login` WHERE `login_user_name`= '$email' ";
+    $queryemail = mysqli_query($conn, $checkemail);
+    $checkemailrows = mysqli_num_rows($queryemail);
+    if ($checkemailrows >= 1) {
+        while ($fetch = mysqli_fetch_assoc($queryemail)) {
+            $globalusername = $fetch['login_user_name'];
+            $globalloggedinid = $fetch['login_id'];
+            $memberid = $fetch['login_instructor_id'];
+            global $memberid;
+            $checkclient = "SELECT *  FROM `instructor` WHERE `instructor_id`= '$memberid'";
+            $queryemail = mysqli_query($conn, $checkclient);
+            $checkclientrows = mysqli_num_rows($queryemail);
+            if ($checkclientrows >= 1) {
+                while ($fetchclient = mysqli_fetch_assoc($queryemail)) {
+                    $globalmembername = $fetchclient['instructor_fullname'];
+                }
+            }
+
+            global $globalmembername;
+            global $memberid;
+            global $globalloggedinid;
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -24,6 +47,13 @@ if (!isset($_SESSION['instructor'])) {
     <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/toastr-btn.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/toastr-options.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 </head>
 
 <body>
@@ -68,7 +98,7 @@ if (!isset($_SESSION['instructor'])) {
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="settings.php">
+                            <a class="dropdown-item" href="account-settings.php">
                                 <i class="ti-settings text-primary"></i>
                                 Settings
                             </a>
@@ -105,26 +135,9 @@ if (!isset($_SESSION['instructor'])) {
                     </li>
 
 
+
                     <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
-                            <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">All Work Out Plans</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
-                            <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">Pending Appointments</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
-                            <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">Completed Tasks</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
+                        <a class="nav-link" href="account-settings.php">
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">My Profile</span>
                         </a>
