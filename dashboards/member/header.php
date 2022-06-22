@@ -19,7 +19,7 @@ if (!isset($_SESSION['member'])) {
             $checkclientrows = mysqli_num_rows($queryemail);
              if($checkclientrows >= 1){
                 while($fetchclient = mysqli_fetch_assoc($queryemail)){
-                    $globalmembername = $fetchclient['member_fullname'];
+                    $globalmembername = $fetchclient['member_full_name'];
                 }
              }
 
