@@ -1,6 +1,6 @@
 <?php
 include 'db-connection.php';
-
+session_start();
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 
@@ -30,15 +30,15 @@ if (empty($username) || empty($password)) {
             } else {
                 
                 if ($category == "instructor") {
-                    session_start();
+                   
                     $_SESSION['instructor'] = $username;
                     echo "<script>window.location.replace('dashboards/instructor/dashboard.php');</script>";
                 } else  if ($category == "member") {
-                    session_start();
+                  
                     $_SESSION['member'] = $username;
                     echo "<script>window.location.replace('dashboards/member/dashboard.php');</script>";
                 } else {
-                    session_start();
+                     
                     $_SESSION['admin'] = $username;
                     echo "<script>window.location.replace('dashboards/admin/dashboard.php');</script>";
                 }

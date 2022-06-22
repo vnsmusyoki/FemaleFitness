@@ -1,8 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['member'])) {
-    echo "<script>alert('yes it is not set');</script>";
-    header('Location: ../../login.php');
+if (!isset($_SESSION['member'])) { 
+      echo "<script>window.location.replace('logout.php');</script>";
 } else {
     include '../../db-connection.php';
     $email = $_SESSION['member'];
@@ -141,7 +140,7 @@ if (!isset($_SESSION['member'])) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
+                        <a class="nav-link" href="my-bookings.php">
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">My Bookings</span>
                         </a>
@@ -153,7 +152,7 @@ if (!isset($_SESSION['member'])) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
+                        <a class="nav-link" href="account-settings.php">
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">My Profile</span>
                         </a>
