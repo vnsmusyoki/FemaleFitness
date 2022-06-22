@@ -144,7 +144,7 @@ if (!isset($_SESSION['admin'])) {
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="all-members.php">All
                                         Members</a></li>
-                                <li class="nav-item"><a class="nav-link" href="add-member.php">All
+                                <li class="nav-item"><a class="nav-link" href="add-member.php">Add
                                         Members</a></li>
                                 <li class="nav-item"><a class="nav-link" href="print-members.php">Print
                                         Members List</a></li>
