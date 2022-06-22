@@ -20,7 +20,6 @@
                                     <th>WEF</th>
                                     <th>WET</th>
                                     <th>Instructor</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,21 +82,10 @@
                                                                 <td>$wet</td>
                                                                 <td>$instructorname, $phonenumber</td>  
                                                                 
-                                                              "; ?>
-
-                                <?php
-                                        echo " <td>"; ?>
-                                <?php
-                                        if ($instructorid == null) {
-                                            echo " <a href='assign-instructor.php?w=$planid' class='btn btn-danger btn-sm'>Pending</a>";
-                                        } else {
-                                            
-                                            echo " <span class='badge badge-light-success'>Assigned</span>";
-                                        }
-                                        ?>
-                                <?php
-                                        echo "   </td>
-                                </tr>";
+                                                               
+                                                                
+                                                                    </tr>
+                                                        ";
                                     }
                                 }
 
