@@ -13,7 +13,7 @@ if (!isset($_SESSION['member'])) {
             $globalusername = $fetch['login_user_name']; 
             $globalloggedinid = $fetch['login_id'];
             $memberid = $fetch['login_member_id'];
-           
+           global $memberid;
             $checkclient = "SELECT *  FROM `member` WHERE `member_id`= '$memberid'";
             $queryemail = mysqli_query($conn, $checkclient);
             $checkclientrows = mysqli_num_rows($queryemail);
@@ -23,7 +23,7 @@ if (!isset($_SESSION['member'])) {
                 }
              }
 
-             global $globalmembername; global $memberid;
+             global $globalmembername; global $memberid; global $globalloggedinid;
         }
     }
 }
@@ -96,7 +96,7 @@ if (!isset($_SESSION['member'])) {
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="settings.php">
+                            <a class="dropdown-item" href="account-settings.php">
                                 <i class="ti-settings text-primary"></i>
                                 Settings
                             </a>
@@ -145,12 +145,7 @@ if (!isset($_SESSION['member'])) {
                             <span class="menu-title">My Bookings</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="workout-plans.php">
-                            <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">All Payments</span>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="account-settings.php">
                             <i class="icon-paper menu-icon"></i>

@@ -13,12 +13,43 @@
                         <form class="forms-sample" action="" method="POST">
                             <?php
 
-                            if (isset($_POST["edittworkout"])) {
+                            if (isset($_POST["editpassword"])) {
 
 
                                 $password = mysqli_real_escape_string($conn, $_POST['password']);
                                 $cpassword = mysqli_real_escape_string($conn, $_POST['confirm_password']);
-                                
+                                $passlength = strlen($password);
+                                if (empty($cpassword) || empty($password)) {
+                                    $message = "
+                                        <script>
+                                            toastr.error('Please Provide all the details');
+                                        </script>
+                                    ";
+                                } else if ($passlength < 6) {
+                                    $message = "
+                                    <script>
+                                        toastr.error('Password should have atleast 6 characters');
+                                    </script>
+                                ";
+                                } else if ($password !== $cpassword) {
+                                    $message = "
+                                    <script>
+                                        toastr.error('Password failed to match');
+                                    </script>
+                                ";
+                                } else {
+                                    $newpass = md5($password);
+
+                                    $update = "UPDATE `login` SET `login_password` = '$newpass' WHERE `login_id` = '$globalloggedinid'";
+                                    $queryupdate = mysqli_query($conn, $update);
+                                    if ($queryupdate) {
+                                        $message = "
+                                        <script>
+                                            toastr.success('Password has been updated successfully');
+                                        </script>
+                                    ";
+                                    }
+                                }
                             }
                             ?>
                             <?php echo $message; ?>
@@ -39,7 +70,7 @@
                                 </div>
                             </div>
 
-                            <button type=" submit" class="btn btn-primary mr-2 text-light" name="edittworkout">
+                            <button type=" submit" class="btn btn-primary mr-2 text-light" name="editpassword">
                                 Update Password
                             </button>
                         </form>
@@ -57,9 +88,43 @@
                         <form class="forms-sample" action="" method="POST">
                             <?php
 
-                            if (isset($_POST["edittworkout"])) {
+                            if (isset($_POST["edittemail"])) {
 
-                                require 'book-workout-validate.php';
+                                $email = mysqli_real_escape_string($conn, $_POST['email']);
+                                $passlength = strlen($password);
+                                if (empty($email)) {
+                                    $message = "
+                                        <script>
+                                            toastr.error('Please Provide your new valid email');
+                                        </script>
+                                    ";
+                                } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                    $message = "
+                                        <script>
+                                            toastr.error('Incorrect email address. Provide a valid one.');
+                                        </script>
+                                    ";
+                                } else {
+                                    $checkemail = "SELECT *  FROM `member` WHERE `member_email` = '$email'";
+                                    $queryemail = mysqli_query($conn, $checkemail);
+                                    $checkemailrows = mysqli_num_rows($queryemail);
+                                    if ($checkemailrows >= 1) {
+                                        $message = "
+                                    <script>
+                                        toastr.error('Email Address already exists. Please confirm your email  again .');
+                                    </script>";
+                                    } else {
+                                        $update = "UPDATE `member` SET `member_email` = '$email' WHERE `member_id` = '$memberid'";
+                                        $queryupdate = mysqli_query($conn, $update);
+                                        if ($queryupdate) {
+                                            $message = "
+                                        <script>
+                                            toastr.success('Email Address has been updated successfully');
+                                        </script>
+                                    ";
+                                        }
+                                    }
+                                }
                             }
                             ?>
                             <?php echo $message; ?>
@@ -74,7 +139,7 @@
                                 </div>
                             </div>
 
-                            <button type=" submit" class="btn btn-primary mr-2 text-light" name="edittworkout">
+                            <button type=" submit" class="btn btn-primary mr-2 text-light" name="edittemail">
                                 Update Email Address
                             </button>
                         </form>
@@ -92,9 +157,48 @@
                         <form class="forms-sample" action="" method="POST">
                             <?php
 
-                            if (isset($_POST["edittworkout"])) {
-
-                                require 'book-workout-validate.php';
+                            if (isset($_POST["editusername"])) {
+                                $username = mysqli_real_escape_string($conn, $_POST['username']);
+                                $usernamelength = strlen($username);
+                                if (empty($username)) {
+                                    $message = "
+                                        <script>
+                                            toastr.error('Please Provide your new username');
+                                        </script>
+                                    ";
+                                } else if (!preg_match("/^[a-zA-z0-9 ]*$/", $username)) {
+                                    $message = "
+                                        <script>
+                                            toastr.error('Incorrect email address. Provide a valid one.');
+                                        </script>
+                                    ";
+                                }  else if ($usernamelength < 8) {
+                                    $message = "
+                                    <script>
+                                        toastr.error('Username should have atleast 8 characters');
+                                    </script>
+                                ";
+                                } else {
+                                    $checkemail = "SELECT *  FROM `login` WHERE `login_user_name` = '$username'";
+                                    $queryemail = mysqli_query($conn, $checkemail);
+                                    $checkemailrows = mysqli_num_rows($queryemail);
+                                    if ($checkemailrows >= 1) {
+                                        $message = "
+                                    <script>
+                                        toastr.error('username already exists. Please confirm your email  again .');
+                                    </script>";
+                                    } else {
+                                        $update = "UPDATE `login` SET `login_user_name` = '$username' WHERE `login_id` = '$globalloggedinid'";
+                                        $queryupdate = mysqli_query($conn, $update);
+                                        if ($queryupdate) {
+                                            $message = "
+                                        <script>
+                                            toastr.success('Username has been updated successfully');
+                                        </script>
+                                    ";
+                                        }
+                                    }
+                                }
                             }
                             ?>
                             <?php echo $message; ?>
@@ -103,13 +207,13 @@
                                 <div class=" col-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Username</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail3"
-                                            placeholder="username" name="email" value="">
+                                        <input type="text" class="form-control" id="exampleInputEmail3"
+                                            placeholder="username" name="username" value="">
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary mr-2 text-light" name="edittworkout">
+                            <button type="submit" class="btn btn-primary mr-2 text-light" name="editusername">
                                 Update Username
                             </button>
                         </form>
@@ -123,7 +227,7 @@
     <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.
-                Premium <a href="£" target="_blank">Admin Dashboard</span>
+                <a href="" target="_blank">Member Dashboard</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Grafted By Grace <i
                     class="ti-heart text-danger ml-1"></i></span>
         </div>
