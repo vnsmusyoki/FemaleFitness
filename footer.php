@@ -15,11 +15,10 @@
                         <nav class="footer_nav">
                             <ul
                                 class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center justify-content-center">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="services.html">Classes & Services</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="index.hpp">Home</a></li>
+                                <li><a href=" member-register.php">Member Account</a></li>
+                                <li><a href="register.php">Instructor Account</a></li>
+                                <li><a href="login.php">My Account</a></li>
                             </ul>
                         </nav>
                         <div class="newsletter_container">
@@ -31,7 +30,7 @@
                         </div>
                         <div
                             class="copyright d-flex flex-row align-items-start justify-content-sm-end justify-content-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
                             Copyright &copy;
                             <script>
                             document.write(new Date().getFullYear());

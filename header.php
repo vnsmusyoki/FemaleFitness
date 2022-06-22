@@ -13,7 +13,6 @@
                      <nav class="main_nav">
                          <ul class="d-flex flex-row align-items-center justify-content-start">
                              <li><a href="index.hpp">Home</a></li>
-                             <li><a href="">Work out Plans</a></li>
                              <li><a href=" member-register.php">Member Account</a></li>
                              <li><a href="register.php">Instructor Account</a></li>
                              <li><a href="login.php">My Account</a></li>
