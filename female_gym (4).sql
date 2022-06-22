@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2022 at 08:38 PM
+-- Generation Time: Jun 22, 2022 at 09:26 AM
 -- Server version: 8.0.29
 -- PHP Version: 8.1.7
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `admin_phone_number` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_mobile`, `admin_phone_number`) VALUES
+(1, 'super admin', 'adminemail@gmail.com', '0711001100', '0788998877');
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +63,8 @@ CREATE TABLE `instructor` (
 
 INSERT INTO `instructor` (`instructor_id`, `instructor_fullname`, `instructor_mobile`, `instructor_address`, `instructor_email`, `instructor_user_id`) VALUES
 (1, 'intruder', '0720882594', 'this is my residence', 'intruder@gmail.com', 1),
-(2, 'elijah', '0722992200', 'home address', 'elijah@gmail.com', 2);
+(2, 'elijah', '0722992200', 'home address', 'elijah@gmail.com', 2),
+(3, 'nexet guess', '0711992211', 'this is my home address', 'instrussw@gmail.com', 7);
 
 -- --------------------------------------------------------
 
@@ -80,9 +88,11 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`login_id`, `login_user_name`, `login_password`, `login_rank`, `login_admin_id`, `login_member_id`, `login_instructor_id`) VALUES
 (1, 'intruder', '5f4dcc3b5aa765d61d8327deb882cf99', 'instructor', NULL, NULL, 1),
-(2, 'adminadmin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin', NULL, NULL, NULL),
-(4, 'oscarbrian', '5f4dcc3b5aa765d61d8327deb882cf99', 'member', NULL, 1, NULL),
-(5, 'neemagrace', '5f4dcc3b5aa765d61d8327deb882cf99', 'member', NULL, 2, NULL);
+(2, 'updateadmin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin', NULL, NULL, 1),
+(4, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', 'member', NULL, 1, NULL),
+(5, 'neemagrace', '5f4dcc3b5aa765d61d8327deb882cf99', 'member', NULL, 2, NULL),
+(6, 'adminadds', '5f4dcc3b5aa765d61d8327deb882cf99', 'member', NULL, 3, NULL),
+(7, 'guestinstructor', '5f4dcc3b5aa765d61d8327deb882cf99', 'instructor', NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -107,8 +117,9 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_full_name`, `member_email`, `member_mobile`, `member_date_of_birth`, `member_gender`, `member_joining_date`, `member_end_date`, `member_user_id`) VALUES
-(1, 'oscar Brian', 'oscar@gmail.com', '0788110011', '2022-05-30', 'Male', '2022-06-13', '2022-06-23', 4),
-(2, 'Neema Grace', 'grace@gmail.com', '0799873209', '2001-01-15', 'Female', '2022-06-14', '2022-06-29', 5);
+(1, 'oscar Brian', 'newemail@gmail.com', '0788110011', '2022-05-30', 'Male', '2022-06-13', '2022-06-23', 4),
+(2, 'Neema Grace', 'grace@gmail.com', '0799873209', '2001-01-15', 'Female', '2022-06-14', '2022-06-29', 5),
+(3, 'admin adds', 'adminadd@gmail.com', '0811220011', '2022-05-30', 'Male', '2022-06-14', '2022-06-24', 6);
 
 -- --------------------------------------------------------
 
@@ -119,12 +130,20 @@ INSERT INTO `member` (`member_id`, `member_full_name`, `member_email`, `member_m
 CREATE TABLE `member_workout_plan` (
   `plan_id` int NOT NULL,
   `plan_member_id` bigint UNSIGNED NOT NULL,
-  `plan_wef` date NOT NULL,
-  `plan_wet` date NOT NULL,
+  `plan_wef` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plan_wet` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `plan_ref` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `plan_workout_id` bigint UNSIGNED NOT NULL,
-  `plan_assigned_instructor_id` bigint UNSIGNED NOT NULL
+  `plan_assigned_instructor_id` bigint UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `member_workout_plan`
+--
+
+INSERT INTO `member_workout_plan` (`plan_id`, `plan_member_id`, `plan_wef`, `plan_wet`, `plan_ref`, `plan_workout_id`, `plan_assigned_instructor_id`) VALUES
+(6, 1, '2022-06-15', '2022-06-24', 'hereis weitten', 1, 1),
+(7, 1, '2022-06-14', '2022-06-30', 'hereis weittens', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -136,11 +155,19 @@ CREATE TABLE `payments` (
   `payment_id` int NOT NULL,
   `payments_plan_id` bigint UNSIGNED NOT NULL,
   `payment_amount` int NOT NULL,
-  `payment_date` date NOT NULL,
-  `payment_time` time NOT NULL,
+  `payment_date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_time` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_transaction_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_mode` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`payment_id`, `payments_plan_id`, `payment_amount`, `payment_date`, `payment_time`, `payment_transaction_code`, `payment_mode`) VALUES
+(1, 6, 500, 'Wednesday, 22/06/2022', '02:05:17 am', 'polkjnfhte', 'M-Pesa'),
+(2, 7, 5000, 'Wednesday, 22/06/2022', '02:50:06 am', 'cdvfbgzaxs', 'M-Pesa');
 
 -- --------------------------------------------------------
 
@@ -198,6 +225,12 @@ ALTER TABLE `member_workout_plan`
   ADD PRIMARY KEY (`plan_id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
 -- Indexes for table `workout`
 --
 ALTER TABLE `workout`
@@ -211,31 +244,37 @@ ALTER TABLE `workout`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `instructor_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `instructor_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `login_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member_workout_plan`
 --
 ALTER TABLE `member_workout_plan`
-  MODIFY `plan_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `plan_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `workout`
